@@ -22,7 +22,7 @@ namespace NumberCrunchApi.Controllers {
         [HttpPost]
         [ProducesResponseType(StatusCodes.Status201Created)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
-        public async Task<IActionResult> GenerateSamples([FromBody] GenerateSamplesRequest request) {
+        public async Task<IActionResult> GenerateSamples([FromBody] GenerateSamplesRequest request, CancellationToken cancellationToken) {
             var group = new SampleGroup {
                 Description = request.Description,
                 Samples = _generator.Generate(request.Count, request.PatientScore, request.DoctorScore).ToList()
@@ -30,7 +30,7 @@ namespace NumberCrunchApi.Controllers {
 
             _context.SampleGroups.Add(group);
 
-            await _context.SaveChangesAsync();
+            await _context.SaveChangesAsync(cancellationToken);
 
             return CreatedAtAction(nameof(GetSamples), new { id = group.SampleGroupId }, group.SampleGroupId);
         }
