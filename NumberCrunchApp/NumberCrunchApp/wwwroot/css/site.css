@@ -1,0 +1,84 @@
+html {
+  font-size: 14px;
+}
+
+@media (min-width: 768px) {
+  html {
+    font-size: 16px;
+  }
+}
+
+.btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus {
+  box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
+}
+
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+body {
+  margin-bottom: 60px;
+}
+
+form {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 1em;
+    margin: 0 auto;
+    max-width: 500px;
+    align-items: center;
+}
+
+form label {
+    text-align: right;
+}
+
+.form-input {
+    justify-self: start;
+    text-align: left;
+}
+
+form input[type="submit"] {
+    grid-column: span 2;
+    justify-self: center;
+    padding: .5em 2em;
+}
+
+.group-details {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    grid-column-gap: 2em;
+}
+
+table {
+    border-top: 1px solid black;
+    border-bottom: 1px solid black;
+}
+
+.default tr:nth-child(even), .bordered tr:nth-child(even) {
+    background-color: #DDD;
+}
+
+.description-header {
+    border: 1px solid black;
+    background: lightgray;
+    margin: 0 auto;
+    padding: 10px;
+}
+
+.description-box {
+    white-space: pre-wrap;
+    border: 1px solid black;
+    margin-top: 1em;
+    padding: 5px;
+}
+
+.simple th, .simple td, .bordered th, .bordered td {
+    border: 1px solid black;
+}
+
+.simple .description-header, .simple th {
+    background: black;
+    color: white;
+}

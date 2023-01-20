@@ -1,0 +1,46 @@
+﻿@model NumberCrunchApp.Models.SampleGenerationViewModel
+
+@{
+    ViewData["Title"] = "Generate Samples";
+}
+
+<div class="text-center">
+    <form method="post" enctype="multipart/form-data">
+        <label asp-for="SampleCount" class="col-form-label-lg">Sample Max Count</label>
+        <div class="form-input">
+            <input asp-for="SampleCount" placeholder="Enter Maximum Sample Count" />
+            <div>
+                <small class="text-danger">
+                    @Html.ValidationMessageFor(model => model.SampleCount)
+                </small>
+            </div>
+        </div>
+
+        <label asp-for="PatientScore" class="col-form-label-lg">Patient Score</label>
+        <div class="form-input">
+            <input asp-for="PatientScore" placeholder="Enter Patient Score" />
+            <div>
+                <small class="text-danger">
+                    @Html.ValidationMessageFor(model => model.PatientScore)
+                </small>
+            </div>
+        </div>
+
+        <label asp-for="DoctorScore" class="col-form-label-lg">Doctor Score</label>
+        <div class="form-input">
+            <input asp-for="DoctorScore" placeholder="Enter Doctor Score" />
+            <div>
+                <small class="text-danger">
+                    @Html.ValidationMessageFor(model => model.DoctorScore)
+                </small>
+            </div>
+        </div>
+
+        <label asp-for="DescriptionFile" class="col-form-label-lg">Upload Message</label>
+        <div class="form-input">
+            <input asp-for="DescriptionFile" placeholder="Upload from Text File" />
+        </div>
+
+        <input class="col-form-label-lg btn btn-primary" type="submit" value="Submit" />
+    </form>
+</div>

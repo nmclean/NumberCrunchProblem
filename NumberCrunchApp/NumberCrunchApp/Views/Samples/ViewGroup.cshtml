@@ -1,0 +1,73 @@
+﻿@model NumberCrunchApp.Models.SampleGroupViewModel
+
+@{
+    ViewData["Title"] = "View Samples";
+}
+
+<div id="group-view">
+    <div class="navbar">
+        <div class="navbar-left-container">
+            <label class="col-form-label-lg" for="style-selector">View</label>
+            <select id="style-selector">
+                <option value="default">Default</option>
+                <option value="simple">Simple</option>
+                <option value="bordered">Bordered</option>
+            </select>
+        </div>
+        <div class="navbar-right-container">
+            <a class="btn btn-secondary" asp-action="@nameof(NumberCrunchApp.Controllers.SamplesController.GenerateGroup)">Go Back</a>
+        </div>
+    </div>
+
+    <div class="group-details">
+        <div class="group-list">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th class="col-form-label-lg font-weight-bold">
+                            Sample #
+                        </th>
+                        <th class="col-form-label-lg font-weight-bold">
+                            Score
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model.Items) {
+                        <tr>
+                            <td class="col-form-label-lg">
+                                @item.Number
+                            </td>
+                            <td class="col-form-label-lg">
+                                @item.ScoreDisplay
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+
+            @{
+                if (Model.Page > 1) {
+                    <a asp-route-page="@(Model.Page - 1)">previous</a>
+                }
+            }
+
+            @Model.Page
+
+            <a asp-route-page="@(Model.Page + 1)">next</a>
+        </div>
+
+        <div class="group-description">
+            <div class="description-header">
+                <span class="col-form-label-lg">My Message</span>
+            </div>
+            <div class="description-box">@Model.Description</div>
+        </div>
+    </div>
+
+    
+</div>
+
+@section Scripts {
+    <script src="@Url.Content("~/js/view.js")"></script>
+}
